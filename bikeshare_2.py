@@ -20,7 +20,7 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = input('From which of following cities do you whish to know more: Chicago, New York or Washington: ').lower()
-    
+
     while city not in CITY_DATA:
         city = input ("I am sorry, I do not recognize that city. Please make sure that you write it down correctly: ").lower()
 
@@ -33,13 +33,13 @@ def get_filters():
     day = input('Please let us know which spefic day you are looking for: ').lower()
     while day not in list_days:
         day = input("I am sorry, I do not recognize that day. Please make sure that you write it down correctly: ").lower()
-    
-    check = input("you entered the following: \nCity: {} \nMonth: {} \nDay: {} \n Is this correct?(Enter yes or no):".format(city, month, day)).lower()
+
+    check = input("you entered the name the following: \nCity: {} \nMonth: {} \nDay: {} \n Is this correct?(Enter yes or no):".format(city, month, day)).lower()
     if check == "no":
         city = "abort"
         month = "abort"
         day = "abort"
-    
+
     print('-'*40)
     return city, month, day
 
@@ -57,13 +57,13 @@ def load_data(city, month, day):
     """
      # load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
-    
+
     # the option to see some raw data
     raw_data = input("Do you wish to see the raw data?(Enter yes or no): ").lower()
     while raw_data == "yes":
         print(df.sample(5))
         raw_data = input("Do you wish to see more data?(Enter yes or no): ").lower()
-    
+
      # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
@@ -93,13 +93,13 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
     months = {1:"January", 2:"Februay", 3:"March", 4:"April", 5:"May",6:"June"}
-    
+
     # display the most common month
     df["month"] = df["Start Time"].dt.month
     common_month = months[df["month"].mode()[0]]
-    
+
     print("The most common month is,",common_month)
-    
+
     # display the most common day of week
     df["day"] = df["Start Time"].dt.weekday_name
     common_day = df["day"].mode()[0]
@@ -112,8 +112,8 @@ def time_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
-    
+
+
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -135,7 +135,7 @@ def station_stats(df):
     print("The most commonly used end station is:",common_end)
     print("The most frequent combination of the two is:",common_both)
 
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -150,12 +150,12 @@ def trip_duration_stats(df):
 
     # display mean travel time
     mean_duration = df["Trip Duration"].mean()
-    
+
     print("The total travel time was:",total_duration)
     print("The mean travel time was:",mean_duration)
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 def user_stats_gender(df):
     """Displays statistics on bikeshare users, including gender and age."""
 
@@ -164,7 +164,7 @@ def user_stats_gender(df):
 
     # Display counts of user types
     user_count = df["User Type"].value_counts()
-    
+
     # Display counts of gender
     gender_count = df["Gender"].value_counts()
 
@@ -172,9 +172,9 @@ def user_stats_gender(df):
     common_year = int(df["Birth Year"].mode()[0])
     earliest_year = int(df["Birth Year"].min())
     newest_year = int(df["Birth Year"].max())
-    
-    
-    
+
+
+
     print("The number of users was:\n",user_count)
     print("The gender distribution was:\n",gender_count)
     print("The oldest user was born in:",earliest_year)
@@ -183,7 +183,7 @@ def user_stats_gender(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-    
+
 def user_stats_nogender(df):
     """Displays statistics on bikeshare users, excluding gender and age."""
 
@@ -192,7 +192,7 @@ def user_stats_nogender(df):
 
     # Display counts of user types
     user_count = df["User Type"].value_counts()
-    
+
     print("The number of users was:\n",user_count)
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -206,17 +206,17 @@ def main():
             if restart.lower() != 'yes':
                 break
         else:
-            
+
         #if not aborted, the program continues
             df = load_data(city, month, day)
 
             time_stats(df)
             station_stats(df)
             trip_duration_stats(df)
-            
+
             #the washington file lacks the gender and age column.
             #if washington was selected a different this makes sure that the progrma doesn't crash
-            
+
             if city != "washington":
                 user_stats_gender(df)
             else:
