@@ -34,7 +34,7 @@ def get_filters():
     while day not in list_days:
         day = input("I am sorry, I do not recognize that day. Please make sure that you write it down correctly: ").lower()
 
-    check = input("you entered the name the following: \nCity: {} \nMonth: {} \nDay: {} \n Is this correct?(Enter yes or no):".format(city, month, day)).lower()
+    check = input("you entered the following: \nCity: {} \nMonth: {} \nDay: {} \n Is this correct?(Enter yes or no):".format(city, month, day)).lower()
     if check == "no":
         city = "abort"
         month = "abort"
