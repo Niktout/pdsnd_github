@@ -19,3 +19,6 @@ hello, these are the non-udacity sites I used to do some extra research.
 https://stackoverflow.com/questions/19377969/combine-two-columns-of-text-in-dataframe-in-pandas-python
 https://stackoverflow.com/questions/41286569/get-total-of-pandas-column/41286607
 https://stackoverflow.com/questions/38309729/count-unique-values-with-pandas-per-groups
+
+### Created by
+Carl
