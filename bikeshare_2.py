@@ -32,9 +32,9 @@ def get_filters():
     # get user input for day of week (all, monday, tuesday, ... sunday)
     day = input('Please let us know which spefic day you are looking for: ').lower()
     while day not in list_days:
-        day = input("I am sorry, I do not recognize that day. Please make sure that you write it down correctly: ").lower()
+        day = input("Hi, unforutantly I do not recognize that day. Please make sure that you write it down correctly: ").lower()
 
-    check = input("you entered the following: \nCity: {} \nMonth: {} \nDay: {} \n Is this correct?(Enter yes or no):".format(city, month, day)).lower()
+    check = input("you have entered the name of the following city: \nCity: {} \nMonth: {} \nDay: {} \n Is this correct?(Enter yes or no):".format(city, month, day)).lower()
     if check == "no":
         city = "abort"
         month = "abort"
