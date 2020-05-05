@@ -5,10 +5,13 @@
 Bikeshare git
 
 ### Description
-Describe what your project is about and what it does
+This project shows data of bikeshare usage in different cities
 
 ### Files used
-Include the files used
+washington.csv
+chicago.csv
+new_york_city.csv
+bikeshare_2.py
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
